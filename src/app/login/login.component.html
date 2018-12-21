@@ -1,0 +1,40 @@
+<div class="padding">
+  <div class="container">
+      <div class="respond text-center">
+          <h1>Sign In</h1>
+          <form #loginForm = "ngForm" (ngSubmit) = "Login(loginForm.value)" class="comment-form">
+      
+              <div class="row mt20">
+                  <div class="col-md-12 col-md-offset-4">
+                      <span class="comment-form-control-wrap email">
+                          <label for="email">Email</label>
+                          <em *ngIf = "loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || showValidationMessages)">Required</em>    
+                          <input (ngModel) = "email" type="email" name="email" id="email" class="comment-form-control" required>
+                      </span>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 col-md-offset-4">
+                      <span class="comment-form-control-wrap">
+                          <label for="password">Password</label>
+                          <em *ngIf = "loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || showValidationMessages)">Required</em>    
+                          <input (ngModel) = "password" type="password" name="password" id="name" class="comment-form-control" required>
+                      </span>
+                  </div>
+              </div>
+              <div class="row mt20">
+                  <div class="col-md-12">
+                      <span class="comment-form-control-wrap submit" (mouseenter) = "showValidationMessages = true" (mouseleave) = "showValidationMessages = false">
+                          <input type="submit" name="submit" id="submit" class="comment-form-control" value="Submit" [disabled] = "loginForm.invalid">
+                      </span>
+                  </div>
+              </div>
+              <div class="row mt20" *ngIf = "invalidLoginCredentials">
+                  <div class="col-md-4 col-md-offset-4">
+                      <h5 class="bg-danger text-center">Invalid Login Credentials</h5>
+                  </div>
+              </div>
+          </form>
+      </div><!-- /.respond -->
+  </div>
+</div>
