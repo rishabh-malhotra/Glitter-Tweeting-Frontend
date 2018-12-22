@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PlaygroundService} from './playground.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-play-ground',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./play-ground.component.css']
 })
 export class PlayGroundComponent implements OnInit {
-
-  constructor() { }
+  errorList: string[] = [];
+  showValidationMessages: Boolean;
+  public selected: Array<Object>;
+  constructor(private playgroundService:PlaygroundService,private router:Router) { }
 
   ngOnInit() {
     var modal = document.getElementById('myModal');
@@ -22,12 +26,6 @@ export class PlayGroundComponent implements OnInit {
   btn.onclick = function() {
     modal.style.display = "block";
   }
-  
-  // When the user clicks on <span> (x), close the modal
-  // span.onclick = function() {
-  //   modal.style.display = "none";
-  // }
-  
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
@@ -37,6 +35,30 @@ export class PlayGroundComponent implements OnInit {
   span.onclick = function() {
     modal.style.display = "none";
   }
+
+  this.playgroundService.yourTweets().subscribe((data)=>{
+    this.saveTweets(data);
+  });
+
+  }
+
+  saveTweets(Tweets){
+    this.selected=Tweets;
+  }
+
+  newTweet(formValues) {
+    var id=localStorage.getItem('ID').toString();
+    this.playgroundService.composeTweet( id,formValues.Message)
+  .subscribe(
+    (data) => {
+       this.router.navigate(['/dashboard']);
+    },
+    (error) => {
+      this.errorList = [];
+      const errorMessage = error['error']['message'];
+      this.errorList.push(`${errorMessage}`);
+    }
+  );
   }
 
 }
