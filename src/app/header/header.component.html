@@ -1,3 +1,52 @@
-<p>
-  header works!
-</p>
+<header class="masthead">
+  <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="menu-search mt20">
+                <div class="form-trigger"><i class="icon_search"></i></div>
+                <form #searchForm = "ngForm" (ngSubmit) = "Search(searchForm.value)">
+                    <input (ngModel) = "keyWord" type ="text" name="keyWord" id="menu-search" placeholder="Search here..">
+                </form>
+            </div>
+        </div>
+        </div>
+      </div><!-- /.container -->
+  </div><!-- /.header-top -->
+
+  <div class="header-bottom">
+      <div class="container">
+          <nav class="navbar navbar-default">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+                      <i class="fa fa-bars"></i>
+                  </button>
+                  </div>
+
+              <div id="main-menu" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                      <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                          <a [routerLink] = "['']">Home</a>
+                      </li>
+
+                      <li  class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                          <a [routerLink] = "['/login']">Sign In</a>
+                      </li>
+                      <li  class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink] = "['/signup']">Sign Up</a>
+                      </li>
+                      <li  class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink] = "['/addquestion']">New Question</a>
+                      </li>
+                      <!-- <li *ngIf = "loggedIn" class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink] = "['/settings']">Settings</a>
+                      </li> -->
+                      <!-- <li *ngIf = "loggedIn" class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink] = "['/profile', userName]">{{userName}}</a>
+                      </li> -->
+                  </ul><!-- /.navbar-nav -->
+              </div><!-- /.navbar-collapse -->
+          </nav>
+      </div><!-- /.container -->
+  </div><!-- /.header-bottom -->
+</header>
