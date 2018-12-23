@@ -13,7 +13,10 @@ import { SearchComponent } from './search/search.component';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
 import { Routes, RouterModule} from '@angular/router';
-import { HttpClient } from 'selenium-webdriver/http';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { PeopleComponent } from './people/people.component';
+import { PostsComponent } from './posts/posts.component';
+import { SearchNavbarComponent } from './search-navbar/search-navbar.component';
 
 const appRoutes:Routes=[
   {
@@ -50,7 +53,22 @@ const appRoutes:Routes=[
     path: 'dashboard',
     component: DashboardComponent,
     pathMatch: 'full'
-  }];
+  },
+  {
+    path: 'analytics',
+    component: AnalyticsComponent,
+    pathMatch: 'full'
+  },{
+    path: 'Posts',
+    component: PostsComponent,
+    pathMatch: 'full'
+  },{
+    path: 'People',
+    component: PeopleComponent,
+    pathMatch: 'full'
+  }
+
+];
 
   
 
@@ -65,7 +83,11 @@ const appRoutes:Routes=[
     HeaderComponent,
     SearchComponent,
     FollowersComponent,
-    FollowingComponent
+    FollowingComponent,
+    AnalyticsComponent,
+    PeopleComponent,
+    PostsComponent,
+    SearchNavbarComponent
   ],
   imports: [
     BrowserModule,

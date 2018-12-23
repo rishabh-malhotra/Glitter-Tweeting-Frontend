@@ -8,7 +8,7 @@
 
       <!-- Modal content -->
       <div class="modal-content col-md-4">
-        <form #tweetForm="ngForm" (ngSubmit)="newTweet(tweetForm)" class="comment-form">
+        <form #tweetForm="ngForm" (ngSubmit)="newTweet(tweetForm.value)" class="comment-form">
           <h3>Compose New tweet <span class="float-right" id="close">&times;</span></h3>
           <textarea type="text" rows="5" cols="45" id="Message" name="Message" (ngModel)="Message"></textarea>
           <br>

@@ -1,4 +1,4 @@
-<header class="masthead">
+<!-- <header class="masthead">
   <div class="header-top">
       <div class="container">
         <div class="row">
@@ -7,8 +7,8 @@
         </div>
         </div>
       </div><!-- /.container -->
-  </div><!-- /.header-top -->
-
+  <!--</div>< /.header-top -->
+<!--
   <div class="header-bottom">
       <div class="container">
           <nav class="navbar navbar-default">
@@ -39,9 +39,38 @@
                       <!-- <li *ngIf = "loggedIn" class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                         <a [routerLink] = "['/profile', userName]">{{userName}}</a>
                       </li> -->
-                  </ul><!-- /.navbar-nav -->
-              </div><!-- /.navbar-collapse -->
-          </nav>
-      </div><!-- /.container -->
-  </div><!-- /.header-bottom -->
-</header>
+                      <!---->
+
+                  <!--</ul> /.navbar-nav -->
+              <!--</div> /.navbar-collapse -->
+        
+        <!--    </nav>
+      </div>
+  </div>
+</header> 
+-->
+<nav class="navbar navbar-expand-lg navbar-light" style="max-height:100px">
+    <img class="navbar-brand" src="../../assets/images/logo.png" height="170" width="250">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <ul class="navbar-nav mr-auto" *ngIf="!loggedIn">
+            <li class="nav-item active ">
+                <a class="nav-link " routerLink="/signup" routerLinkActive="active-link">SignUp <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/login" routerLinkActive="active-link">Login <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
+                <li class="nav-item active">
+                    <a class="nav-link" >{{Username}} <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" (click)="logout()">Logout </a>
+                </li>
+            </ul>
+    </div>
+</nav>

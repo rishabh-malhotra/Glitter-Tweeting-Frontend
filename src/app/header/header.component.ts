@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+public loggedIn;
+public Username;
+  constructor() { 
+    
   }
 
+  ngOnInit() {
+    this.loggedIn=localStorage.getItem('ID');
+    this.Username=localStorage.getItem('Username');
+  }
+
+  logout(){
+    console.log(this.loggedIn);
+    localStorage.removeItem('ID');
+    localStorage.removeItem('Username');
+    this.loggedIn=localStorage.getItem('ID');
+    this.Username=localStorage.getItem('Username');
+  }
 }

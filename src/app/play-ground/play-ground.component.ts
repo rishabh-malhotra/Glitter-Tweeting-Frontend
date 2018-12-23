@@ -41,7 +41,8 @@ export class PlayGroundComponent implements OnInit {
       modal.style.display = "none";
     }
     var id = localStorage.getItem('ID').toString();
-    this.playgroundService.yourTweets(id).subscribe((data: Array<Object>) => {
+
+    this.playgroundService.getAllTweets(id).subscribe((data: Array<Object>) => {
       console.log(data);
       this.selected = data;
       console.log(this.selected);

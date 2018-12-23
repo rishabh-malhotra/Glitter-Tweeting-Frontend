@@ -14,7 +14,7 @@ export class PlaygroundService {
       return this.http.post(`${environment.apiUrl}/user/newTweet`, newTweetObject);
     }
 
-    yourTweets(UserID:String){
+    getAllTweets(UserID:String){
 
       const TweetsObject = Object.assign({}, {UserID});
       return this.http.post(`${environment.apiUrl}/user/playground`,TweetsObject);
