@@ -14,8 +14,20 @@ export class PlaygroundService {
       return this.http.post(`${environment.apiUrl}/user/newTweet`, newTweetObject);
     }
 
-    yourTweets(){
-      return this.http.get(`${environment.apiUrl}/user/playground`);
+    yourTweets(UserID:String){
+
+      const TweetsObject = Object.assign({}, {UserID});
+      return this.http.post(`${environment.apiUrl}/user/playground`,TweetsObject);
+    }
+
+    // deleteTweet(UserID:String,MessageID:String){
+    //   const DeleteTweetObject = Object.assign({}, {UserID,MessageID});
+    //   return this.http.delete(`${environment.apiUrl}/user/deletetweet`,DeleteTweetObject)
+    // }
+
+    editTweet(UserID:String,Message:String,MessageID:String){
+      const EditTweetObject = Object.assign({}, {UserID,Message,MessageID});
+      return this.http.put(`${environment.apiUrl}/user/updatetweet`,EditTweetObject)
     }
    
 }
