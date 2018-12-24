@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-navbar',
@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class SearchNavbarComponent implements OnInit {
 
   constructor() { }
-
+  @Input() childMessage:string;
   ngOnInit() {
+    console.log(this.childMessage);
   }
 
 }

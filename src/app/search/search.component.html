@@ -3,7 +3,23 @@
   search works!
 </p>
 
-<input type="text" name="SearchString">
-<button><span><i class="fa fa-search" aria-hidden="true"></i></span></button>
+<form #searchForm="ngForm" (ngSubmit)="SearchUser(searchForm.value)">
+<input type="text" name="SearchString" id="SearchString" (ngModel)="SearchString">
+<button type="submit"><span><i class="fa fa-search" aria-hidden="true"></i></span></button>
+</form>
 
+
+<div *ngIf="users">
+  <div *ngFor="let user of users">
+    <div class="row">
+      <div class="col-md-6 offset-3">
+    <p>{{user.FirstName}}</p>
+    <p>{{user.LastName}}</p>
+    <p>{{user.Email}}</p>
+    <img [src]="user.Image">
+    <hr>
+  </div>
+  </div>
+</div>
+</div>
 <app-search-navbar></app-search-navbar>

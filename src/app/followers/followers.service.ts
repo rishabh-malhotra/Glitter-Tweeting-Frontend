@@ -10,9 +10,9 @@ export class FollowersService {
 
   constructor(private http:HttpClient) { }
 
-  getFollowers(UserID:String){
-    const UsersObject = Object.assign({}, {UserID});
-    return this.http.post(`${environment.apiUrl}/user/followers`,UsersObject);
+  getFollowers(userId:String){
+    //const UsersObject = Object.assign({}, {UserID});
+    return this.http.get(`${environment.apiUrl}/user/followers/${userId}`);
   }
   
 }
