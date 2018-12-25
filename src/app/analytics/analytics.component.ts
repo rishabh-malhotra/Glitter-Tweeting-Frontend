@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class AnalyticsComponent implements OnInit {
 
   constructor() { }
-
+  public analytics:Object;
   ngOnInit() {
+    this.analyticsService.getAnalyticsData().subscribe(
+      (data) => {
+
+        this.analytics=data;
+
+      });
   }
 
 }

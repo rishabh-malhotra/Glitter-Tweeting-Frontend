@@ -2,3 +2,17 @@
 <p>
   following works!
 </p>
+<div *ngIf="following">
+  <div *ngFor="let user of following">
+    Total following:{{Count}}
+    <div class="col-md-6 offset-1">
+    <p>Email: {{user.Email}}</p>
+    <p>Usernmae: {{user.Username}}</p>
+    <p>First Name: {{user.FirstName}}</p>
+    <p>Last Name: {{user.LastName}}</p>
+      <p>User ID: {{user.ID}}</p>
+    <button class="btn btn-danger" (click)="unFollow(user.ID)">UnFollow</button>
+  </div>
+  </div>
+
+</div>

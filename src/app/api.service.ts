@@ -16,4 +16,8 @@ export class ApiService {
     const userRegistrationObject = Object.assign({}, { Email, Password});
     return this.http.post(`${environment.apiUrl}/login`, userRegistrationObject);
   }
+  userToUnfollow(UserID:string,UserToFollowID:string){
+    const userRegistrationObject = Object.assign({}, { UserID,UserToFollowID});
+    return this.http.post(`${environment.apiUrl}/user/unfollow`, userRegistrationObject);
+  }
 }

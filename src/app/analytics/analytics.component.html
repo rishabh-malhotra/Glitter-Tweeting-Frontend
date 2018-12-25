@@ -1,5 +1,8 @@
 <app-dashboard></app-dashboard>
 
-<p>
-  analytics works!
-</p>
+<div *ngIf="analytics">
+  <p>Most tweets by : {{analytics.MostTweetsBy}}</p>
+  
+  <p>Total tweets today : {{analytics.TotalTweetsToday}}</p>
+  <p>Most Liked : {{analytics.MostLiked}}</p>
+  </div>
