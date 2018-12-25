@@ -2,9 +2,10 @@
 <p>
   following works!
 </p>
+FOllowing:Total following:{{Count}}
+
 <div *ngIf="following">
   <div *ngFor="let user of following">
-    Total following:{{Count}}
     <div class="col-md-6 offset-1">
     <p>Email: {{user.Email}}</p>
     <p>Usernmae: {{user.Username}}</p>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PlaygroundService } from './playground.service'
 import { Router } from '@angular/router'
 import { _document } from '@angular/platform-browser/src/browser';
+import{ApiService} from '../api.service';
+
+
 
 @Component({
   selector: 'app-play-ground',
@@ -15,7 +18,7 @@ export class PlayGroundComponent implements OnInit {
 
 
 
-  constructor(private playgroundService: PlaygroundService, private router: Router) { }
+  constructor(private playgroundService: PlaygroundService, private router: Router,private apiservice:ApiService) { }
 
   ngOnInit() {
     var modal = document.getElementById('myModal');
@@ -65,6 +68,7 @@ export class PlayGroundComponent implements OnInit {
       .subscribe(
 
         (data) => {
+          window.location.reload();
           this.router.navigate(['/dashboard']);
         },
         (error) => {
@@ -75,26 +79,51 @@ export class PlayGroundComponent implements OnInit {
       );
   }
 
-  // deleteTweet(tweetID){
-  //   var id=localStorage.getItem('ID').toString(); 
-  //   this.playgroundService.deleteTweet(id,tweetID);
-  // }
-
   
   editTweet(formValues) {
 
     console.log(formValues);
     var id = localStorage.getItem('ID').toString();
-    var tweetID=this.UpdatedMessageID;
+    var TweetID=this.UpdatedMessageID;
     console.log(formValues.UpdatedMessage);
-    console.log(tweetID);
+    console.log(TweetID);
       console.log(id);
-    this.playgroundService.editTweet(id, formValues.UpdatedMessage, tweetID).subscribe((status: Object) => {
-      
+    this.playgroundService.editTweet(id, formValues.UpdatedMessage, TweetID).subscribe((status: Object) => {
+      window.location.reload();
       this.router.navigate(['/dashboard']);
     });
   }
+
+  deleteTweet(TweetID:String){
+    var id=localStorage.getItem('ID').toString(); 
+    this.playgroundService.deleteTweet(id,TweetID) .subscribe(
+
+      (data) => {
+        window.location.reload();
+        this.router.navigate(['/dashboard']);
+          });
+  }
   
+  LikeTweet(TweetID:String){
+    var id=localStorage.getItem('ID').toString(); 
+    this.apiservice.LikeTweet(id,TweetID) .subscribe(
+
+      (data) => {
+        window.location.reload();
+        this.router.navigate(['/dashboard']);
+          });
+  }
+
+
+  DislikeTweet(TweetID:String){
+    var id=localStorage.getItem('ID').toString(); 
+    this.apiservice.DislikeTweet(id,TweetID) .subscribe(
+
+      (data) => {
+        window.location.reload();
+        this.router.navigate(['/dashboard']);
+          });
+  }
   
   public UpdatedMessageID;
 
@@ -107,9 +136,9 @@ export class PlayGroundComponent implements OnInit {
     var span = document.getElementById("close2");
 
     var UpdatedMessageID= document.getElementById("UpdatedMessageID") as HTMLInputElement;
-     UpdatedMessageID.value=tweet.MessageId;
+     UpdatedMessageID.value=tweet.TweetID;
     
-    this.UpdatedMessageID=tweet.MessageId;
+    this.UpdatedMessageID=tweet.TweetID;
     
     var UpdatedMessage=document.getElementById("UpdatedMessage") as HTMLInputElement;
     UpdatedMessage.value=tweet.Message;

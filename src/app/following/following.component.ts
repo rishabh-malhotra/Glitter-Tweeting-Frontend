@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FollowingService} from './following.service';
+import {ApiService} from '../api.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-following',
@@ -9,7 +12,7 @@ export class FollowingComponent implements OnInit {
 
   public following:Array<Object>;
   public Count:number;
-  constructor() { }
+  constructor(private followingService:FollowingService,private apiservice:ApiService,private route:Router) { }
 
   ngOnInit() {
     var userId=localStorage.getItem('ID');

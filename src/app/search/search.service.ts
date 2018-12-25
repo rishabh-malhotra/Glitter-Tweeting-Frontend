@@ -8,8 +8,8 @@ import { environment } from '../../environments/environment';
 export class SearchService {
 
   constructor(private http:HttpClient) { }
-  GetAllUsers(Username:String){
-    const SearchObject = Object.assign({}, {Username});
+  GetAllUsers(SearchString:String){
+    const SearchObject = Object.assign({}, {SearchString});
     return this.http.post(`${environment.apiUrl}/user/searchUser`, SearchObject);
   
   }

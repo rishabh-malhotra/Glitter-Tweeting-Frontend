@@ -16,8 +16,23 @@ export class ApiService {
     const userRegistrationObject = Object.assign({}, { Email, Password});
     return this.http.post(`${environment.apiUrl}/login`, userRegistrationObject);
   }
+
+  userToFollow(UserID:string,UserToFollowID:string){
+    const userRegistrationObject = Object.assign({}, { UserID,UserToFollowID});
+    return this.http.post(`${environment.apiUrl}/user/follow`, userRegistrationObject);
+  }
+
   userToUnfollow(UserID:string,UserToFollowID:string){
     const userRegistrationObject = Object.assign({}, { UserID,UserToFollowID});
     return this.http.post(`${environment.apiUrl}/user/unfollow`, userRegistrationObject);
+  }
+
+  LikeTweet(LoggedInUserID:String,TweetID:String){
+    const LikeObject = Object.assign({}, { LoggedInUserID,TweetID});
+    return this.http.post(`${environment.apiUrl}/user/like`, LikeObject);
+
+  }
+  DislikeTweet(UserID:String,TweetID:String){
+    return this.http.delete(`${environment.apiUrl}/user/dislike/${UserID}/${TweetID}`);
   }
 }
