@@ -14,10 +14,10 @@ export class PlaygroundService {
       return this.http.post(`${environment.apiUrl}/user/newTweet`, newTweetObject);
     }
 
-    getAllTweets(UserID:String){
+    getAllTweets(userId:String){
 
-      const TweetsObject = Object.assign({}, {UserID});
-      return this.http.post(`${environment.apiUrl}/user/playground`,TweetsObject);
+      
+      return this.http.get(`${environment.apiUrl}/user/playground/${userId}`);
     }
 
     // deleteTweet(UserID:String,MessageID:String){

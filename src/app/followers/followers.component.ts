@@ -10,14 +10,18 @@ export class FollowersComponent implements OnInit {
 
   public users:Array<Object>;
   constructor(private followersService:FollowersService) { }
-
+  public Count:number;
   ngOnInit() {
     var id=localStorage.getItem('ID');
     console.log('ID');
     this.followersService.getFollowers(id).subscribe((data: Array<Object>) => {
-      console.log(data);
+      
       this.users = data;
-      console.log(this.users);
+      var i=0;
+      data.forEach(element => {
+        i++;
+      });
+      this.Count=i;
   });
 }
 

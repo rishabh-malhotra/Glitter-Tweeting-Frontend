@@ -28,10 +28,14 @@
         <p>{{tweet.TweetID}}</p>
 
         <div class="col-md-6">
+          <div *ngIf="tweet.IsAuthor">
           <button class="btn btn-danger" id="deletecalling" (click)="deleteTweet(tweet.TweetID)">Delete</button>
           <button class="btn btn-success" (click)="openPopup(tweet)" id="myBtn2">Edit</button>
-          <button class="btn btn-primary" (click)="LikeTweet(tweet.TweetID)" id="myBtn2">LikeTweet</button>
-          <button class="btn btn-default" (click)="DislikeTweet(tweet.TweetID)" id="myBtn2">DislikeTweet</button>
+        </div>
+        <div *ngIf="!tweet.IsAuthor">
+          <button *ngIf="!tweet.isLiked" class="btn btn-primary" (click)="LikeTweet(tweet.TweetID)" id="myBtn2">LikeTweet</button>
+          <button *ngIf="tweet.isLiked" class="btn btn-default" (click)="DislikeTweet(tweet.TweetID)" id="myBtn2">DislikeTweet</button>
+        </div>
           <hr>
         </div>
         <div id="myModal2" class="modal">
@@ -44,8 +48,6 @@
               <button class="btn btn-primary btn-sm" type="submit">Update Tweet</button>
             </form>
           </div>
-          <!--ngModel="{{tweet.MessageId}}"
-          ngModel="{{tweet.Message}}"-->
         </div>
       </div>
     </div>

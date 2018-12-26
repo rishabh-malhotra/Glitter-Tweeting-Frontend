@@ -70,13 +70,16 @@ export class PlayGroundComponent implements OnInit {
         (data) => {
           window.location.reload();
           this.router.navigate(['/dashboard']);
+         // this.router.navigate(['/dashboard']);
         },
         (error) => {
           this.errorList = [];
           const errorMessage = error['error']['message'];
           this.errorList.push(`${errorMessage}`);
         }
-      );
+      )
+      window.location.reload();
+      this.router.navigate(['/Play-Ground']);;
   }
 
   
