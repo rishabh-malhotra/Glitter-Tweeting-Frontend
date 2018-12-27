@@ -6,6 +6,12 @@
 <form #searchForm="ngForm" (ngSubmit)="SearchUser(searchForm.value)">
 <input type="text" name="SearchString" id="SearchString" (ngModel)="SearchString">
 <button type="submit"><span><i class="fa fa-search" aria-hidden="true"></i></span></button>
+<div id="tabs">
+  <input type="radio" name="search" id="toggle-people" value="people"  (ngModel)="search" checked/>
+  <label for="toggle-people">People</label>
+  <input type="radio" name="search" value="posts" id="toggle-posts" (ngModel)="search"/>
+  <label for="toggle-posts">Posts</label>  
+</div>
 </form>
 
 

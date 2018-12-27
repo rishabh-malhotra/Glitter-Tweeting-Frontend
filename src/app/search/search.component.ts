@@ -19,14 +19,17 @@ export class SearchComponent implements OnInit {
 
   
   SearchUser(formValues){
-    
+    if(formValues.search == "posts"){
+      this.searchService.GetAllTags(formValues.SearchString).subscribe((data:Array<Object>)=>{
+        this.users=data;
+    })
+  }
+  else{
     this.searchService.GetAllUsers(formValues.SearchString).subscribe((data:Array<Object>)=>{
-      console.log(formValues.SearchString);
-      console.log(data);
       this.users=data;
     })
   }
-
+}
   public Follow(UsertoFollowID:string){
     var ID=localStorage.getItem('ID');
     this.apiservice.userToFollow(ID,UsertoFollowID).subscribe(data=>{

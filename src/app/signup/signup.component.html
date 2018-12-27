@@ -1,10 +1,9 @@
-
 <div class="padding">
     <div class="container">
         <div class="respond text-center">
             <h1>Sign Up</h1>
             <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)" class="comment-form">
-                <div class="row mt20" >
+                <div class="row mt20">
                     <div class="col-md-4 col-md-offset-4">
                         <ul>
                             <li *ngFor="let errorMessage of errorList" class="errormessage">{{errorMessage}}</li>
@@ -52,7 +51,7 @@
                     <div class="col-md-12 col-md-offset-4">
                         <span class="comment-form-control-wrap">
                             <label for="PhoneNumber">Phone Number</label>
-                           <input (ngModel)="PhoneNumber" type="phoneNumber" name="PhoneNumber" id="PhoneNumber" class="comment-form-control"
+                            <input (ngModel)="PhoneNumber" type="phoneNumber" name="PhoneNumber" id="PhoneNumber" class="comment-form-control"
                                 required>
                         </span>
                     </div>
@@ -61,23 +60,49 @@
                     <div class="col-md-12 col-md-offset-4">
                         <span class="comment-form-control-wrap">
                             <label for="Image">Profile Image</label>
+
                             <input (ngModel)="Image" type="file" name="Image" id="Image" class="comment-form-control"
                                 required>
+
+
                         </span>
                     </div>
                 </div>
-               
-                <div class="row">
-                        <div class="col-md-12 col-md-offset-4">
-                      
-                        <select (ngModel)="Country" name="Country" id="Country">
-                        <option value="India">India</option>
-                         <option value="USA">USA</option>
-                        <option value="UK">UK</option>
-                    </select>
-                    </div>
-                    </div>
 
+                <!-- <div class="row">
+                    <div class="col-md-12 col-md-offset-4">
+
+                        <select (ngModel)="Country" name="Country" id="Country">
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="row">
+                    <div class="col-md-4 offset-4">
+                        <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true" >
+                            <input type="hidden" value="" (ngModel)="Country" name="Country" id="Country">
+                            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+                                <span class="bfh-selectbox-option input-medium" data-option=""></span>
+                                <b class="caret"></b>
+                            </a>
+                            <div class="bfh-selectbox-options">
+                                <input type="text" class="bfh-selectbox-filter">
+                                <div role="listbox">
+                                    <ul role="option">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-md-4 offset-4">
+    
+                        <select  id="Country" name="Country" class="form-control bfh-countries" data-country="US" data-flags="true" (ngModel)="Country"></select>
+                    </div>
+                </div>
                 <div class="row mt20">
                     <div class="col-md-12">
                         <span class="comment-form-control-wrap submit" (mouseenter)="showValidationMessages = true"
