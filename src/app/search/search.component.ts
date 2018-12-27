@@ -11,28 +11,28 @@ import {Router} from '@angular/router'
 export class SearchComponent implements OnInit {
  @Output() public parentMessage="abc";
   constructor(private searchService:SearchService,private apiservice:ApiService,private route:Router) { }
-
+  public ID;
   public users:Array<Object>;
   ngOnInit() {
-    console.log("From search Component:"+this.parentMessage)
+     this.ID=localStorage.getItem('ID');
   }
 
   
   SearchUser(formValues){
     if(formValues.search == "posts"){
-      this.searchService.GetAllTags(formValues.SearchString).subscribe((data:Array<Object>)=>{
+      this.searchService.GetAllTags(this.ID,formValues.SearchString).subscribe((data:Array<Object>)=>{
         this.users=data;
     })
   }
   else{
-    this.searchService.GetAllUsers(formValues.SearchString).subscribe((data:Array<Object>)=>{
+    this.searchService.GetAllUsers(this.ID,formValues.SearchString).subscribe((data:Array<Object>)=>{
       this.users=data;
     })
   }
 }
   public Follow(UsertoFollowID:string){
-    var ID=localStorage.getItem('ID');
-    this.apiservice.userToFollow(ID,UsertoFollowID).subscribe(data=>{
+    
+    this.apiservice.userToFollow(this.ID,UsertoFollowID).subscribe(data=>{
       window.location.reload();
       this.route.navigate['./Following']
     });

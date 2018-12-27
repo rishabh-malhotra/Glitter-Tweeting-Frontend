@@ -24,8 +24,9 @@
     <p>Created At: {{user.CreatedAt}}</p>
     <p>{{user.Email}}</p>
     <p>user ID: {{user.UserId}}</p>
-    <button class="btn btn-success" (click)="Follow(user.UserId)">Follow</button>
     <img [src]="user.Image">
+    <button *ngIf="!user.isFollowed" class="btn btn-success" (click)="Follow(user.UserId)">Follow</button>
+    <button *ngIf="user.isFollowed" class="btn btn-danger" (click)="Unfollow(user.UserId)">Unfollow</button>
     <hr>
   </div>
   </div>
