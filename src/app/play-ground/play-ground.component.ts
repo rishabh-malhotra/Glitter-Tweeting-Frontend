@@ -44,7 +44,8 @@ export class PlayGroundComponent implements OnInit {
       modal.style.display = "none";
     }
     var id = localStorage.getItem('ID').toString();
-
+    var img=localStorage.getItem('img')
+    console.log('image name '+img)
     this.playgroundService.getAllTweets(id).subscribe((data: Array<Object>) => {
       console.log(data);
       this.selected = data;
@@ -85,15 +86,12 @@ export class PlayGroundComponent implements OnInit {
   
   editTweet(formValues) {
 
-    console.log(formValues);
+    
     var id = localStorage.getItem('ID').toString();
     var TweetID=this.UpdatedMessageID;
-    console.log(formValues.UpdatedMessage);
-    console.log(TweetID);
-      console.log(id);
     this.playgroundService.editTweet(id, formValues.UpdatedMessage, TweetID).subscribe((status: Object) => {
       window.location.reload();
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/Play-Ground']);
     });
   }
 
@@ -103,7 +101,7 @@ export class PlayGroundComponent implements OnInit {
 
       (data) => {
         window.location.reload();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/Play-Ground']);
           });
   }
   
@@ -113,7 +111,7 @@ export class PlayGroundComponent implements OnInit {
 
       (data) => {
         window.location.reload();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
           });
   }
 
@@ -124,7 +122,7 @@ export class PlayGroundComponent implements OnInit {
 
       (data) => {
         window.location.reload();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/Play-Ground']);
           });
   }
   
@@ -134,7 +132,7 @@ export class PlayGroundComponent implements OnInit {
   openPopup(tweet) {
     var modal = document.getElementById('myModal2');
     // Get the button that opens the modal
-    console.log(modal);
+    
 
     var span = document.getElementById("close2");
 
@@ -145,8 +143,7 @@ export class PlayGroundComponent implements OnInit {
     
     var UpdatedMessage=document.getElementById("UpdatedMessage") as HTMLInputElement;
     UpdatedMessage.value=tweet.Message;
-    //console.log(tweet.Message);
-    // When the user clicks the button, open the modal 
+     
 
     modal.style.display = "block";
 

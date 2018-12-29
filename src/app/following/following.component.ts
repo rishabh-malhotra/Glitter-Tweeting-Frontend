@@ -12,10 +12,16 @@ export class FollowingComponent implements OnInit {
 
   public following:Array<Object>;
   public Count:number;
+  public loggedIn:boolean;
   constructor(private followingService:FollowingService,private apiservice:ApiService,private route:Router) { }
 
   ngOnInit() {
+    
     var userId=localStorage.getItem('ID');
+    if(userId!=null){
+      this.loggedIn=true
+    }
+    else this.loggedIn=false;
     this.followingService.getFollowing(userId).subscribe((data:Array<Object>)=>{
 
       this.following=data;

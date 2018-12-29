@@ -10,6 +10,7 @@ import {Router} from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   errorList: string[] = [];
+  invalidLoginCredentials = false;
   showValidationMessages: Boolean;
   constructor(private apiService: ApiService,private router: Router) { }
   x;
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
           this.x=data;
           localStorage.setItem('ID',this.x.ID);
           localStorage.setItem('Username',this.x.Username);
-          this.router.navigate(['/dashboard']);
+          this.invalidLoginCredentials = false;
+          this.router.navigate(['/Play-Ground']);
         },
         (error) => {
           this.errorList = [];

@@ -11,10 +11,16 @@ export class FollowersComponent implements OnInit {
   public users:Array<Object>;
   constructor(private followersService:FollowersService) { }
   public Count:number;
+  public ID:String;
+  public loggedIn:boolean;
   ngOnInit() {
-    var id=localStorage.getItem('ID');
-    console.log('ID');
-    this.followersService.getFollowers(id).subscribe((data: Array<Object>) => {
+    this.ID=localStorage.getItem('ID');
+    if(this.ID!=null){
+      this.loggedIn=true;
+    }
+    else
+    this.loggedIn=false; 
+    this.followersService.getFollowers(this.ID).subscribe((data: Array<Object>) => {
       
       this.users = data;
       var i=0;

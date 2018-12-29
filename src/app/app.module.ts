@@ -17,6 +17,10 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { SearchNavbarComponent } from './search-navbar/search-navbar.component';
 
 const appRoutes:Routes=[
+  {path:'',
+  component: LoginComponent,
+  pathMatch:'full'
+  },
   {
     path: 'signup',
     component: SignupComponent,

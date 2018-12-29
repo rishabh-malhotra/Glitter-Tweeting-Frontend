@@ -1,53 +1,59 @@
 <app-dashboard></app-dashboard>
 <div class="row">
-  <div class="col-md-4 offset-3">
-    <button id="myBtn">Compose new tweet</button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content col-md-4">
-        <form #tweetForm="ngForm" (ngSubmit)="newTweet(tweetForm.value)" class="comment-form">
-          <h3>Compose New tweet <span class="float-right" id="close">&times;</span></h3>
-          <textarea type="text" rows="5" cols="45" id="Message" name="Message" (ngModel)="Message"></textarea>
-          <br>
-          <button class="btn btn-primary btn-sm" type="submit">Done</button>
-        </form>
+    <div class="col-md-4 offset-3 ">
+      <button id="myBtn">Compose New Tweet</button>
+      <br/><br/>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+  
+        <!-- Modal content -->
+        <div class="modal-content col-md-4">
+          <form #tweetForm="ngForm" (ngSubmit)="newTweet(tweetForm.value)" class="comment-form">
+            <h3>Compose New tweet(Maximum 240 characters) <span class="float-right" id="close">&times;</span></h3>
+            <textarea type="text" maxlength="240" rows="5" cols="45" id="Message" name="Message" (ngModel)="Message"></textarea>
+            <br>
+            <button class="btn btn-primary btn-sm" type="submit">Done</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div *ngIf="selected">
-      <div class="col-md-6" *ngFor="let tweet of selected">
-        <p>{{tweet.Message}}</p>
-        <p>{{tweet.UserName}}</p>
-        <p>{{tweet.CreatedAt | date}}</p>
-        <p>{{tweet.TweetID}}</p>
-
-        <div class="col-md-6">
-          <div *ngIf="tweet.IsAuthor">
-          <button class="btn btn-danger" id="deletecalling" (click)="deleteTweet(tweet.TweetID)">Delete</button>
-          <button class="btn btn-success" (click)="openPopup(tweet)" id="myBtn2">Edit</button>
-        </div>
-        <div *ngIf="!tweet.IsAuthor">
-          <button *ngIf="!tweet.isLiked" class="btn btn-primary" (click)="LikeTweet(tweet.TweetID)" id="myBtn2">LikeTweet</button>
-          <button *ngIf="tweet.isLiked" class="btn btn-default" (click)="DislikeTweet(tweet.TweetID)" id="myBtn2">DislikeTweet</button>
-        </div>
-          <hr>
-        </div>
-        <div id="myModal2" class="modal">
-          <div class="modal-content col-md-4">
-            <form #editTweetForm="ngForm" (ngSubmit)="editTweet(editTweetForm.value)" class="comment-form">
-              <h3>Update Tweet <span class="float-right" id="close2">&times;</span></h3>
-              <textarea type="text" rows="5" cols="45" id="UpdatedMessage" name="UpdatedMessage" ngModel></textarea>
-              <input type="hidden" id="UpdatedMessageID" name="UpdatedMessageID">
-              <br>
-              <button class="btn btn-primary btn-sm" type="submit">Update Tweet</button>
-            </form>
+  <div class="container">
+    <div class="row">
+      <div *ngIf="selected">
+        <div class="col-md-4" *ngFor="let tweet of selected">
+      <div class="card-header">Tweet And User Information</div>
+      <div class="card-body">
+          <p>Message: {{tweet.Message}}<br>
+          UserName: {{tweet.UserName}}<br>
+          Created At:  {{tweet.CreatedAt | date}}</p>
+         
+          <div class="col-md-4" >
+              <div *ngIf="tweet.IsAuthor">
+                <button class="btn btn-danger btn-md first" id="deletecalling" (click)="deleteTweet(tweet.TweetID)">Delete</button>
+                <button class="btn btn-success btn-md first" (click)="openPopup(tweet)" id="myBtn2">Edit</button>
+              </div>
+              <div *ngIf="!tweet.IsAuthor">
+                <button *ngIf="!tweet.isLiked" class="btn btn-primary btn-md first" (click)="LikeTweet(tweet.TweetID)" id="myBtn2">LikeTweet</button>
+                <button *ngIf="tweet.isLiked" class="btn btn-warning btn-md first" (click)="DislikeTweet(tweet.TweetID)" id="myBtn2">DislikeTweet</button>
+              </div> 
+            <br>
+          </div>
+          </div>
+       <br>
+          <div id="myModal2" class="modal">
+            <div class="modal-content col-md-4">
+              <form #editTweetForm="ngForm" (ngSubmit)="editTweet(editTweetForm.value)" class="comment-form">
+                <h3>Update Tweet <span class="float-right" id="close2">&times;</span></h3>
+                <textarea type="text" rows="5" cols="45" id="UpdatedMessage" name="UpdatedMessage" ngModel></textarea>
+                <input type="hidden" id="UpdatedMessageID" name="UpdatedMessageID">
+                <br>
+                <button class="btn btn-primary btn-sm" type="submit">Update Tweet</button>
+              </form>
+            </div>
+           
           </div>
         </div>
       </div>
+    </div>
     </div>

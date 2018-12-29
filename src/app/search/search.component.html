@@ -1,35 +1,67 @@
-<app-dashboard></app-dashboard>
-<p>
-  search works!
-</p>
+<div *ngIf="!loggedIn">
+    You should be logged in to view this page.....
+    <a routerLink="/login" routerLinkActive="active-link">Login</a> 
+</div>
+<div  *ngIf="loggedIn">
+  <app-dashboard></app-dashboard>
+
 
 <form #searchForm="ngForm" (ngSubmit)="SearchUser(searchForm.value)">
+
 <input type="text" name="SearchString" id="SearchString" (ngModel)="SearchString">
 <button type="submit"><span><i class="fa fa-search" aria-hidden="true"></i></span></button>
-<div id="tabs">
-  <input type="radio" name="search" id="toggle-people" value="people"  (ngModel)="search" checked/>
-  <label for="toggle-people">People</label>
-  <input type="radio" name="search" value="posts" id="toggle-posts" (ngModel)="search"/>
-  <label for="toggle-posts">Posts</label>  
-</div>
-</form>
+<!--
+  <div id="tabs">
+  <input type="radio" name="searchbypeople" checked="checked" id="people">
+    <label for="people">People</label>
+  <input type="radio" name="searchbypost"  id="posts">
+    <label for="posts">Post</label>
+    <div id="people-tab" class="tab">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </div>
+    
+      <div id="posts-tab" class="tab">
+      Donec venenatis quam sit amet neque gravida, at commodo lacus gravida.
+      </div>
+  </div>-->
 
+  <div id="tabs">
+    <input type="radio" name="search" id="toggle-people" value="people"  (ngModel)="search" checked/>
+    <label for="toggle-people">People</label>
+    <input type="radio" name="search" value="posts" id="toggle-posts" (ngModel)="search"/>
+    <label for="toggle-posts">Posts</label>  
+  </div>
+</form>
 
 <div *ngIf="users">
   <div *ngFor="let user of users">
     <div class="row">
-      <div class="col-md-6 offset-3">
-    <p>{{user.FirstName}}</p>
-    <p>{{user.LastName}}</p>
-    <p>Created At: {{user.CreatedAt}}</p>
-    <p>{{user.Email}}</p>
-    <p>user ID: {{user.UserId}}</p>
-    <img [src]="user.Image">
+      <div class="col-md-6 offset-3">     
+    <p>First Name: {{user.FirstName}}</p>
+    <p>Last Name: {{user.LastName}}</p>
+   <!-- <img [src]="user.Image">-->
+    <p>Email: {{user.Email}}</p>
+    
     <button *ngIf="!user.isFollowed" class="btn btn-success" (click)="Follow(user.UserId)">Follow</button>
-    <button *ngIf="user.isFollowed" class="btn btn-danger" (click)="Unfollow(user.UserId)">Unfollow</button>
+    <button *ngIf="user.isFollowed" class="btn btn-danger" (click)="unFollow(user.UserId)">UnFollow</button>
     <hr>
   </div>
   </div>
 </div>
 </div>
-<app-search-navbar></app-search-navbar>
+
+<div *ngIf="tweets">
+  <div *ngFor="let tweet of tweets">
+    <div class="row">
+      <div class="col-md-6 offset-3">     
+    <p>Message: {{tweet.Message}}</p>
+    <p>User Name: {{tweet.UserName}}</p>
+    <p>Created At: {{tweet.CreatedAt}}</p>
+    <!--<button class="btn btn-success" (click)="Follow(user.UserId)">Follow</button>-->
+    <!--<img [src]="user.Image">-->
+    <hr>
+  </div>
+  </div>
+</div>
+</div>
+</div>

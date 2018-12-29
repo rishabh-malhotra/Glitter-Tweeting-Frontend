@@ -1,118 +1,90 @@
-<div class="padding">
-    <div class="container">
-        <div class="respond text-center">
-            <h1>Sign Up</h1>
-            <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)" class="comment-form">
-                <div class="row mt20">
-                    <div class="col-md-4 col-md-offset-4">
-                        <ul>
-                            <li *ngFor="let errorMessage of errorList" class="errormessage">{{errorMessage}}</li>
-                        </ul>
-                    </div>
+<div class="signup-form">
+        <div>
+            <div class="container">
+                <div class="respond text-center">
+                    <h1>Create Account</h1>
+                    <form #signupForm="ngForm" class="comment-form">                       
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i> </span>
 
-                </div>
-                <div class="row mt20">
-                    <div class="col-md-12 col-md-offset-4">
-                        <span class="comment-form-control-wrap email">
-                            <label for="FirstName">First Name</label>
-                            <input (ngModel)="FirstName" type="FirstName" name="FirstName" id="FirstName" class="comment-form-control"
-                                required>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-md-offset-4">
-                        <span class="comment-form-control-wrap email">
-                            <label for="LastName">Last Name</label>
-                            <input (ngModel)="LastName" type="LastName" name="LastName" id="LastName" class="comment-form-control"
-                                required>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-md-offset-4">
-                        <span class="comment-form-control-wrap email">
-                            <label for="Email">Email</label>
-                            <input (ngModel)="Email" type="email" name="Email" id="Email" class="comment-form-control"
-                                required>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-md-offset-4">
-                        <span class="comment-form-control-wrap">
-                            <label for="Password">Password</label>
-                            <input (ngModel)="Password" type="password" name="Password" id="Password" class="comment-form-control"
-                                required>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-md-offset-4">
-                        <span class="comment-form-control-wrap">
-                            <label for="PhoneNumber">Phone Number</label>
-                            <input (ngModel)="PhoneNumber" type="phoneNumber" name="PhoneNumber" id="PhoneNumber" class="comment-form-control"
-                                required>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-md-offset-4">
-                        <span class="comment-form-control-wrap">
-                            <label for="Image">Profile Image</label>
-
-                            <input (ngModel)="Image" type="file" name="Image" id="Image" class="comment-form-control"
-                                required>
-
-
-                        </span>
-                    </div>
-                </div>
-
-                <!-- <div class="row">
-                    <div class="col-md-12 col-md-offset-4">
-
-                        <select (ngModel)="Country" name="Country" id="Country">
-                            <option value="India">India</option>
-                            <option value="USA">USA</option>
-                            <option value="UK">UK</option>
-                        </select>
-                    </div>
-                </div> -->
-                <!-- <div class="row">
-                    <div class="col-md-4 offset-4">
-                        <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true" >
-                            <input type="hidden" value="" (ngModel)="Country" name="Country" id="Country">
-                            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-                                <span class="bfh-selectbox-option input-medium" data-option=""></span>
-                                <b class="caret"></b>
-                            </a>
-                            <div class="bfh-selectbox-options">
-                                <input type="text" class="bfh-selectbox-filter">
-                                <div role="listbox">
-                                    <ul role="option">
-                                    </ul>
-                                </div>
+                                <input (ngModel)="FirstName" type="FirstName" name="FirstName" id="FirstName" class="form-control"
+                                    placeholder="Enter Your FirstName" required>
+                                <div *ngIf="checkName"> First Name Required </div>
                             </div>
                         </div>
-                    </div>
-                </div> -->
-                <div class="row">
-                    <div class="col-md-4 offset-4">
-    
-                        <select  id="Country" name="Country" class="form-control bfh-countries" data-country="US" data-flags="true" (ngModel)="Country"></select>
-                    </div>
-                </div>
-                <div class="row mt20">
-                    <div class="col-md-12">
-                        <span class="comment-form-control-wrap submit" (mouseenter)="showValidationMessages = true"
-                            (mouseleave)="showValidationMessages = false">
-                            <input type="submit" name="submit" id="submit" class="comment-form-control" value="Sign Up"
-                                [disabled]="signupForm.invalid">
-                        </span>
-                    </div>
-                </div>
-            </form>
-        </div><!-- /.respond -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class=" input-group-addon"><i class="fa fa-user"></i></span>
+                                <input (ngModel)="LastName" type="LastName" name="LastName" id="LastName" class="form-control"
+                                    placeholder="Enter Your LastName" required>
+                                <div *ngIf="checkName">
+                                    Last Name Required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-paper-plane"></i>
+                                </span>
+
+                                <input (ngModel)="Email" type="email" name="Email" id="Email" class="form-control"
+                                    placeholder="Enter Your Email Address" required>
+                                <div *ngIf="checkEmail"> Email required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+
+                                <input (ngModel)="Password" type="password" name="Password" id="Password" class="form-control"
+                                    placeholder="Enter Password" required>
+                                <div *ngIf="checkPassword"> Password required and contains atleast 1 capital letter 1 special character and 1 alphanumeric character </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class=" input-group-addon"><i class="fa fa-phone"></i></span>
+
+                                <input (ngModel)="PhoneNumber" type="phoneNumber" name="PhoneNumber" id="PhoneNumber"
+                                    class="form-control" placeholder="Enter Your Contact Number" required>
+                                <div *ngIf="checkPhoneNumber"> Phone number required </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+
+                                <input (ngModel)="Image" type="file" name="Image" id="Image" class="form-control"
+                                    placeholder="Upload Your Profile Image"required>
+                                <div *ngIf="checkImage" class="bg-danger">No Image is uploaded </div>
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select  id="Country" name="Country" class="form-control" ngModel>
+                                    <option value="" disabled selected>Select your Country</option>
+                                    <option value="India">India</option>
+                                    <option value="USA">USA</option>
+                                    <option value="England">England</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="France">France</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                        <div class="row mt20">
+                            <div class="col-md-12">
+                                    <input type="submit" class="btn btn-lg btn-success btn-block"
+                                        (click)="adduser(signupForm.value)" value="Sign Up" [disabled]="signupForm.invalid"  >
+                               
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /.respond -->
+            </div>
+        </div>
     </div>
-</div>

@@ -1,9 +1,48 @@
+<div *ngIf="!loggedIn">
+    You should be logged in to view this page.....
+    <a routerLink="/login" routerLinkActive="active-link">Login</a> 
+</div>
+<div *ngIf="loggedIn">
 <app-dashboard></app-dashboard>
+<br>
+<div class="row" *ngIf="analytics">
 
-<div *ngIf="analytics">
-  <p>Most tweets by : {{analytics.MostTweetsBy}}</p>
-  
-  <p>Total tweets today : {{analytics.TotalTweetsToday}}</p>
-  <p>Most Liked : {{analytics.MostLiked}}</p>
-  <p>Most Trending hashtag: {{analytics.MostTrending}}</p>
-  </div>
+    <div class="col-md-3 offset-md-3 h-100">
+        <div class="card border-primary mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Most Tweets By:</div>
+            <div class="card-body">
+                <h5 class="card-title">{{analytics.MostTweetsBy}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 h-100">
+        <div class="card border-primary mb-3 h-100" style="max-width: 18rem;">
+            <div class="card-header">Total Tweets Today</div>
+            <div class="card-body">
+                <h5 class="card-title">{{analytics.TotalTweetsToday}}</h5>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 offset-md-3">
+        <div class="card border-primary mb-3 h-100" style="max-width: 18rem;">
+            <div class="card-header">Most Liked Tweet</div>
+            <div class="card-body">
+                <h5 class="card-title">{{analytics.MostLiked}}</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-primary mb-3 h-100" style="max-width: 18rem;">
+            <div class="card-header">Most Trending Hashtag</div>
+            <div class="card-body">
+                <h5 class="card-title">{{analytics.MostTrending}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
