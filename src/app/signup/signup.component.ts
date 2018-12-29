@@ -35,7 +35,7 @@ imagePreview: string;
 
 
 
-  signup(formvalue) {
+  adduser(formvalue) {
 
 //tetsing
 let flag = true;

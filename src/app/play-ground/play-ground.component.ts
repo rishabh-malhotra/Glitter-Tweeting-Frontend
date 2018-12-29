@@ -111,7 +111,7 @@ export class PlayGroundComponent implements OnInit {
 
       (data) => {
         window.location.reload();
-        this.router.navigate(['/']);
+        this.router.navigate(['/Play-Ground']);
           });
   }
 

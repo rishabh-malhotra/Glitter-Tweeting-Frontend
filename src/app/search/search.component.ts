@@ -29,11 +29,12 @@ export class SearchComponent implements OnInit {
     if(formValues.search == "posts"){
       this.ID=localStorage.getItem('ID');
       this.searchService.GetAllTags(this.ID,formValues.SearchString).subscribe((data:Array<Object>)=>{
-        this.tweets=data;
+      this.tweets=data;
       this.users=null;
     })
   }
-  else{
+  else if(formValues.search == "people"){
+    
     this.ID=localStorage.getItem('ID');
     this.searchService.GetAllUsers(this.ID,formValues.SearchString).subscribe((data:Array<Object>)=>{
       this.users=data;
